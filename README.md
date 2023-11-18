@@ -95,33 +95,32 @@ IP address | 01101000.11000110.11110001.01111101
 Mask       | 11111111.11111111.11111111.10000000
 ```
 
-We can now apply the mask to the IP address through a [bitwise AND](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to find the network address of the IP:
+Artık IP'nin ağ adresini bulmak için maskeyi IP adresine [bitwise AND](https://en.wikipedia.org/wiki/Bitwise_operation#AND) yoluyla uygulayabiliriz:
 ```
 Network address | 01101000.11000110.11110001.00000000
 ```
 
-Which translates to a network address of ``104.198.241.0``.
+Bu da ``104.198.241.0`` ağ adresine karşılık gelir.
 </br>
 </br>
 
-#### Finding the range of host addresses
+#### Host adresleri aralığını bulma
 
-To determine what host addresses we can use on our network, we have to use the bits of our IP address dedicated to the host address. Let's use our previous IP address and mask:
+Ağımızda hangi ana bilgisayar adreslerini kullanabileceğimizi belirlemek için IP adresimizin ana bilgisayar adresine ayrılmış bitlerini kullanmamız gerekir. Önceki IP adresimizi ve maskemizi kullanalım:
 ```
 IP address | 01101000.11000110.11110001.01111101
 Mask       | 11111111.11111111.11111111.10000000
 ```
 
-The possible range of our host addresses is expressed through the last 7 bits of the mask which are all 0. Therefore, the range of host addresses is:
+Host adreslerimizin olası aralığı, maskenin tümü 0 olan son 7 biti ile ifade edilir. Bu nedenle, host adreslerinin aralığı şöyledir:
 ```
 BINARY  | 0000000 - 1111111
 DECIMAL | 0 - 127
 ```
 
-To get the range of possible IP addresses for our network, we add the range of host addresses to the network address. Our range of possible IP addresses becomes ``104.198.241.0 - 104.198.241.127``.
+Ağımız için olası IP adresleri aralığını elde etmek için, ana bilgisayar adresleri aralığını ağ adresine ekleriz. Olası IP adresleri aralığımız ``104.198.241.0 - 104.198.241.127`` olur.
 
-<ins>HOWEVER</ins>, the extremities of the range are reserved for specific uses and cannot be given to an interface:
-```
+<ins>ANCAK </ins>, aralığın uç kısımları özel kullanımlar için ayrılmıştır ve bir arayüze verilemez:
 104.198.241.0   | Reserved to represent the network address.
 104.198.241.127 | Reserved as the broadcast address; used to send packets to all hosts of a network.
 ```
